@@ -1,0 +1,100 @@
+[NEAT]
+fitness_criterion     = max
+# Hedef fitness degeri, buna ulasildiginda durulabilir
+fitness_threshold     = 10000
+pop_size              = 50
+reset_on_extinction   = False
+
+[DefaultGenome]
+# node_names, num_inputs, num_hidden, num_outputs
+# Bu degerler Python kodunuzdaki giris ve cikis sayisiyla eslesmeli
+# Girisler: 5 radar degeri
+# Cikislar: Sola don, Saga don, Yavasla, Hizlan (4 eylem)
+num_inputs              = 5
+# Baslangicta gizli katman olmayabilir, NEAT evrimlestirebilir
+num_hidden              = 0
+num_outputs             = 4
+
+# veya partial_nodirect, full_direct vb.
+initial_connection      = full_nodirect
+feed_forward            = True
+# Baglantilarin varsayilan olarak etkin olup olmadigi
+enabled_default         = True
+# Baglantinin etkin durumunun (enabled/disabled) degisme olasiligi
+enabled_mutate_rate     = 0.01
+
+compatibility_disjoint_coefficient = 1.0
+compatibility_weight_coefficient = 0.5
+
+# Baglanti ekleme olasiligi
+# Biraz yüksek olabilir, 0.05-0.08 denenebilir
+conn_add_prob           = 0.1
+# Baglanti silme olasiligi
+# Biraz yüksek olabilir, 0.05-0.08 denenebilir
+conn_delete_prob        = 0.1
+# Dugum ekleme olasiligi
+# Biraz yüksek olabilir, 0.02-0.03 denenebilir
+node_add_prob           = 0.05
+# Dugum silme olasiligi
+# Biraz yüksek olabilir, 0.02-0.03 denenebilir
+node_delete_prob        = 0.05
+
+# Agirliklarin baslangic dagilimi icin parametreler
+weight_init_mean      = 0.0
+weight_init_stdev     = 1.0
+# Genellikle bias_max_value ile ayni veya benzer tutulur
+weight_max_value      = 30.0
+# Genellikle bias_min_value ile ayni veya benzer tutulur
+weight_min_value      = -30.0
+# Değişimin büyüklüğü, gerekirse biraz artırılabilir (örn: 0.7-1.0)
+weight_mutate_power     = 0.5
+# Ağırlıkların ne sıklıkta mutasyona uğrayacağı
+weight_mutate_rate      = 0.8
+# Ağırlıkların tamamen yeni bir değerle değiştirilme oranı
+weight_replace_rate     = 0.1
+
+activation_default      = sigmoid
+# Farklı aktivasyon fonksiyonları denemek istemiyorsanız 0 kalabilir
+activation_mutate_rate  = 0.0
+# relu, tanh gibi seçenekler de denenebilir
+activation_options      = sigmoid
+
+aggregation_default     = sum
+aggregation_mutate_rate = 0.0
+aggregation_options     = sum
+
+bias_init_mean          = 0.0
+bias_init_stdev         = 1.0
+bias_max_value          = 30.0
+bias_min_value          = -30.0
+# Değişimin büyüklüğü
+bias_mutate_power       = 0.5
+# Bias'ların ne sıklıkta mutasyona uğrayacağı
+bias_mutate_rate        = 0.7
+bias_replace_rate       = 0.1
+
+response_init_mean      = 1.0
+response_init_stdev     = 0.0
+response_max_value      = 30.0
+response_min_value      = -30.0
+response_mutate_power   = 0.0
+response_mutate_rate    = 0.0
+response_replace_rate   = 0.0
+
+
+[DefaultSpeciesSet]
+# Türleri ayırmak için eşik değeri
+compatibility_threshold = 3.0
+
+[DefaultStagnation]
+species_fitness_func = max
+# Bir türün iyileşme göstermeden kaç jenerasyon devam edebileceği
+max_stagnation       = 20
+# Her türden sonraki jenerasyona aktarılacak en iyi birey sayısı
+species_elitism      = 2
+
+[DefaultReproduction]
+# Popülasyondan sonraki jenerasyona doğrudan aktarılacak en iyi birey sayısı
+elitism            = 2
+# Çaprazlama için hayatta kalma oranı
+survival_threshold = 0.2
